@@ -1,0 +1,9 @@
+{
+   "data" : [
+      [ 4, 9, 15 ],
+      [ 3, 5, 102 ],
+      [ 68 ]
+   ],
+   "definition" : "data.jsd",
+   "source" : "cmsdaq-401b28.cern.ch"
+}

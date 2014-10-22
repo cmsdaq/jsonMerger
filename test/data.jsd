@@ -1,0 +1,19 @@
+{
+ "data": [
+  {
+   "name":"var1",
+   "type" : "integer",
+   "operation" : "histo"
+  },
+  {
+   "name":"var2",
+   "type" : "integer",
+   "operation" : "histo"
+  },
+  {
+   "name":"var3",
+   "type" : "integer",
+   "operation" : "histo"
+  }
+ ]
+}
