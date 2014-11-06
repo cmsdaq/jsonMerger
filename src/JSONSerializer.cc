@@ -16,8 +16,10 @@ bool JSONSerializer::serialize(JsonSerializable* pObj, std::string & output)
   assert(pObj!=nullptr);
 
   Json::Value serializeRoot;
-  if (!pObj->serialize(serializeRoot))
+  if (!pObj->serialize(serializeRoot)) {
+    std::cout << "File serialization failed!" << std::endl;
     return false;
+  }
 
   Json::StyledWriter writer;
   output = writer.write(serializeRoot);
@@ -33,13 +35,13 @@ bool JSONSerializer::deserialize(JsonSerializable* pObj, std::string & input)
   Json::Reader reader;
 
   if (!reader.parse(input, deserializeRoot)) {
-    std::cout << " file parsing failed!" << std::endl;
+    std::cout << "File parsing failed!" << std::endl;
     return false;
   }
 
 
   if (!pObj->deserialize(deserializeRoot)) {
-    std::cout << " file deserialize failed!" << std::endl;
+    std::cout << "File deserialization failed!" << std::endl;
     return false;
   }
 

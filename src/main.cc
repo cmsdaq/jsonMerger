@@ -58,7 +58,7 @@ int  main(int argc, char**argv)
   else outName=argv[1];
   bool written = FileIO::writeStringToFile(outName, result);
   if (!written) {
-    std::cout << " Could not write file " << outName << std::endl;
+    std::cout << "Could not write file " << outName << std::endl;
     return 5;
   }
 }

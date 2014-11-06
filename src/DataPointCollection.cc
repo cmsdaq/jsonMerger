@@ -106,7 +106,10 @@ bool DataPointCollection::deserialize(Json::Value& root)
     {
       if (def_) {
         MonitorableDefinition *mdp = def_->getMonitorableDefinition(i);
-        if (!mdp) return false;//TODO exception
+        if (!mdp) {
+          std::cout << "No definition for field " << i << std::endl;
+          return false;//TODO exception
+        }
         TrackedMonitorable t(*mdp);
         data_.emplace_back(t,root.get(DATA, "")[i]);
       }
@@ -115,7 +118,7 @@ bool DataPointCollection::deserialize(Json::Value& root)
         MonitorableDefinition md("",type,op,false);
         TrackedMonitorable t(md);
         if (!JsonMonitorable::typeAndOperationCheck(type,op)) {
-          std::cout << " definition file not found or not valid" << std::endl;
+          std::cout << "Definition file not found or not valid: " << definition_ << std::endl;
           return false;//TODO:throw exception
         }
         data_.emplace_back(t,root.get(DATA, "")[i]);
