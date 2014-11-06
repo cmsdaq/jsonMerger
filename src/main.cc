@@ -56,5 +56,9 @@ int  main(int argc, char**argv)
   std::string outName;
   if (argv[1][0]!='/') outName=std::string(cwd)+'/'+argv[1];
   else outName=argv[1];
-  FileIO::writeStringToFile(outName, result);
+  bool written = FileIO::writeStringToFile(outName, result);
+  if (!written) {
+    std::cout << " Could not write file " << outName << std::endl;
+    return 5;
+  }
 }

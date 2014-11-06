@@ -21,7 +21,7 @@ cd $TOPDIR
 cat > jsonMerger.spec <<EOF
 Name: $PACKAGENAME
 Version: 0.1
-Release: 1
+Release: 2
 Summary: jsonMerger tool
 License: gpl
 Group: DAQ

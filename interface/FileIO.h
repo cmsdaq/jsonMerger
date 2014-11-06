@@ -17,7 +17,7 @@ public:
   /**
    * Writes given string to specified file path
    */
-  static void writeStringToFile(std::string const& filename, std::string& content);
+  static bool writeStringToFile(std::string const& filename, std::string& content);
   /**
    * Reads string from specified path, returns false if file does not exist
    */

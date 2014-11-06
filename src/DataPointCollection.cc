@@ -43,7 +43,11 @@ DataPointCollection::DataPointCollection(std::string & filename, std::map<std::s
 {
   Json::Value root;
   std::string s;
-  FileIO::readStringFromFile(filename, s);
+  bool readSuccess = FileIO::readStringFromFile(filename, s);
+  if (!readSuccess) {
+    std::cout << "Could not read file " << filename;
+    return;
+  }
 
   isInitialized_ = JSONSerializer::deserialize(this,s);
 }
@@ -110,7 +114,10 @@ bool DataPointCollection::deserialize(Json::Value& root)
         //still allow to deserialize without valid definition
         MonitorableDefinition md("",type,op,false);
         TrackedMonitorable t(md);
-        if (!JsonMonitorable::typeAndOperationCheck(type,op)) return false;//TODO:throw exception
+        if (!JsonMonitorable::typeAndOperationCheck(type,op)) {
+          std::cout << " definition file not found or not valid" << std::endl;
+          return false;//TODO:throw exception
+        }
         data_.emplace_back(t,root.get(DATA, "")[i]);
       }
     }

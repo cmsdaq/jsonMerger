@@ -32,12 +32,16 @@ bool JSONSerializer::deserialize(JsonSerializable* pObj, std::string & input)
   Json::Value deserializeRoot;
   Json::Reader reader;
 
-  if (!reader.parse(input, deserializeRoot))
+  if (!reader.parse(input, deserializeRoot)) {
+    std::cout << " file parsing failed!" << std::endl;
     return false;
+  }
 
 
-  if (!pObj->deserialize(deserializeRoot))
+  if (!pObj->deserialize(deserializeRoot)) {
+    std::cout << " file deserialize failed!" << std::endl;
     return false;
+  }
 
   return true;
 }
